@@ -1,0 +1,150 @@
+Phase 1 – Setup & Instalasi ✅
+
+* Install Laravel ✅
+
+  * `composer create-project laravel/laravel nama-project`
+  * Konfigurasi .env (database, APP_NAME)
+
+* Setup authentication (Laravel Breeze) ✅
+
+  * Login, Register, Password Reset
+  * Dashboard user
+
+* Database setup ✅
+
+  * Buat database di phpMyAdmin
+  * Test koneksi database
+
+* Migration dasar ✅
+
+  * users (sudah ada)
+  * password_resets
+
+* Seeder user admin ✅
+
+  * Buat user admin default
+
+Phase 2 – Master Data (Kategori & Produk)
+
+2.1 Kategori 
+
+* Migration categories: id, name, slug, description, created_at, updated_at
+* Model Category: Relationship ke Product (hasMany)
+* CRUD Kategori
+
+  * Index (tampil semua)
+  * Create (form tambah)
+  * Store (simpan)
+  * Edit (form edit)
+  * Update (update data)
+  * Delete (hapus)
+* Validation: Name required, unique; Slug auto generate
+
+2.2 Produk
+
+* Migration products: id, category_id, name, slug, description, price, stock, image, is_active, created_at, updated_at
+* Model Product: Relationship ke Category (belongsTo), Relationship ke OrderItem (hasMany)
+* CRUD Produk
+
+  * Index dengan pagination
+  * Create dengan upload gambar
+  * Store dengan validasi
+  * Show (detail produk)
+  * Edit
+  * Update (+ update gambar)
+  * Delete (+ hapus gambar lama)
+* Upload gambar: Storage link setup, Resize image (optional), Validasi file (max 2MB, jpg/png)
+
+Phase 3 – Keranjang & Checkout
+
+3.1 Session Cart
+
+* Cart Controller: Add to cart (simpan di session), Update quantity, Remove item, Clear cart
+* Cart logic: Cek stock sebelum add, Hitung subtotal per item, Hitung total keseluruhan
+
+3.2 Checkout Process
+
+* Migration orders: id, user_id, invoice_number, total, status, payment_method, shipping_address, notes, created_at, updated_at
+* Migration order_items: id, order_id, product_id, quantity, price, subtotal
+* Order Controller: Form checkout (input alamat, metode bayar), Generate invoice number otomatis, Simpan order + order items, Kurangi stock produk, Clear cart setelah order
+* Model Order: Relationship ke User (belongsTo), Relationship ke OrderItem (hasMany)
+* Model OrderItem: Relationship ke Order (belongsTo), Relationship ke Product (belongsTo)
+
+3.3 Order History
+
+* User order history: List semua order user, Detail order, Status tracking
+
+Phase 4 – Admin Panel
+
+4.1 Dashboard Admin
+
+* Middleware IsAdmin (Cek role user di middleware, Protect admin routes)
+* Dashboard statistics: Total produk, Total order hari ini, Total pendapatan bulan ini, Produk stock rendah
+* Chart sederhana (optional): Order per hari (7 hari terakhir)
+
+4.2 Kelola Produk (Admin)
+
+* CRUD produk dari admin panel
+* Filter by kategori
+* Search produk
+* Bulk action (aktif/nonaktif)
+
+4.3 Kelola Order (Admin)
+
+* List semua order: Filter by status, Filter by date, Search by invoice
+* Detail order: Info customer, List items, Total pembayaran
+* Update status order: Pending → Processing → Shipped → Completed, Atau: Cancelled
+
+4.4 Kelola User (tambahan)
+
+* List user
+* Block/unblock user
+* Ubah role (admin/customer)
+
+Phase 5 – Frontend Customer
+
+5.1 Homepage
+
+* Featured products, Kategori, About
+
+5.2 Product Listing
+
+* Grid produk, Filter by kategori, Sort (harga, terbaru), Pagination
+
+5.3 Product Detail
+
+* Gambar produk, Deskripsi, Harga, Stock status, Button Add to Cart
+
+5.4 Cart Page
+
+* List item di cart, Update quantity, Remove item, Total harga, Button checkout
+
+Phase 6 – Validation & Error Handling
+
+* Form Request Validation: ProductRequest, CategoryRequest, OrderRequest
+* Error pages: 404 Not Found, 403 Forbidden (untuk admin area), 500 Server Error
+* Flash messages: Success message, Error message, Warning message
+* Try-catch di controller: Upload file, Database transaction, Delete product
+
+Phase 7 – Polishing
+
+* UI dengan Blade Component: Layout template, Navigation component, Alert component, Card component
+* CSS custom (tanpa framework): styles.css di public/css, Responsive dengan media query, Simple grid system
+* Seeder lengkap: UserSeeder (admin + customer), CategorySeeder (5-10 kategori), ProductSeeder (20-50 produk dengan Faker)
+* README.md: Cara install, Credential admin, Fitur-fitur, Screenshot
+
+Phase 8 – Testing (Tambahan Penting untuk Pemula)
+
+* Manual testing checklist: Register & login, CRUD semua modul, Add to cart → checkout, Admin approve order, Upload gambar
+* Test di browser berbeda
+* Test responsive mobile
+
+Bonus Features (Jika Waktu Cukup)
+
+Level 1 (Mudah)
+
+* Search produk (by name)
+* Filter by kategori
+* Sort produk (harga, nama, terbaru)
+* Stock alert (warna merah jika < 10)
+* Pagination custom
