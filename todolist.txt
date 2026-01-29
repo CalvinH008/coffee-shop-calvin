@@ -29,7 +29,7 @@ Phase 2 – Master Data (Kategori & Produk)
 2.1 Kategori 
 
 * Migration categories: id, name, slug, description, created_at, updated_at ✅
-* Model Category: Relationship ke Product (hasMany)
+* Model Category: Relationship ke Product (hasMany) ✅
 * CRUD Kategori
 
   * Index (tampil semua)
@@ -43,7 +43,7 @@ Phase 2 – Master Data (Kategori & Produk)
 2.2 Produk
 
 * Migration products: id, category_id, name, slug, description, price, stock, image, is_active, created_at, updated_at ✅
-* Model Product: Relationship ke Category (belongsTo), Relationship ke OrderItem (hasMany)
+* Model Product: Relationship ke Category (belongsTo), Relationship ke OrderItem (hasMany) ✅
 * CRUD Produk
 
   * Index dengan pagination

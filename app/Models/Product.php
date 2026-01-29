@@ -89,8 +89,8 @@ class Product extends Model
      */
 
     public function setNameAttribute($value){
-        $this->attribute['name'] = $value;
-        $this->attribute['slug'] = Str::slug($value);
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 
     /**
@@ -117,7 +117,7 @@ class Product extends Model
         }
 
         // return jika tidak ada image
-        return asset('iamges/no-image.png');
+        return asset('images/no-image.png');
     }
 
     /**
@@ -166,7 +166,7 @@ class Product extends Model
      * Product::byCategory($categoryId)->get();
      */
 
-    public function scopeCategory($query, $categoryId){
+    public function scopeByCategory($query, $categoryId){
         return $query->where('category_id', $categoryId);
     }
 
@@ -177,7 +177,7 @@ class Product extends Model
      * Product::search('arabica')->get();
      */
 
-    public function find($query, $keyword){
+    public function scopeSearch($query, $keyword){
         return $query->where('name', 'LIKE', "%{$keyword}%")->orWhere('description', 'LIKE', "%{$keyword}%");
     }
 
@@ -203,7 +203,7 @@ class Product extends Model
      * @return bool
      */
 
-    public function lowStock(){
+    public function isLowStock(){
         return $this->stock < 10 && $this->stock > 0;
     }
 
