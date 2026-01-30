@@ -20,7 +20,7 @@ return new class extends Migration
             // inv/2026/01/12
             $table->string('invoice_number')->unique();
             // total pembayaran
-            $table->decimal('total', 12, 2)->unique();
+            $table->decimal('total', 12, 2);
             // status order: pending, processing, shipped, completed, canceled
             $table->enum('status', ['pending', 'processing', 'shipped', 'completed', 'canceled'])->default('pending');
             // metode pembayaran? cash, transfer, cod

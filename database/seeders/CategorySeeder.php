@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -13,25 +13,46 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categories')->insert([
+        $categories = [
             [
-                'name' => 'Coffee',
-                'slug' => 'coffee',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'name' => 'Kopi Arabica',
+                'description' => 'Kopi arabica dengan rasa smooth dan aroma khas',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Kopi Robusta',
+                'description' => 'Kopi robusta dengan rasa bold dan kafein tinggi',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Kopi Blend',
+                'description' => 'Campuran arabica dan robusta untuk rasa seimbang',
+                'is_active' => true,
             ],
             [
                 'name' => 'Non Coffee',
-                'slug' => 'non-coffee',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'description' => 'Minuman non kopi seperti teh, chocolate, dan lainnya',
+                'is_active' => true,
             ],
             [
                 'name' => 'Snack',
-                'slug' => 'snack',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'description' => 'Makanan pendamping kopi',
+                'is_active' => true,
             ],
-        ]);
+            [
+                'name' => 'Dessert',
+                'description' => 'Makanan penutup manis',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Minuman Dingin',
+                'description' => 'Minuman segar dan dingin',
+                'is_active' => true,
+            ],
+        ];
+
+        foreach($categories as $category){
+            Category::create($category);
+        }
     }
 }

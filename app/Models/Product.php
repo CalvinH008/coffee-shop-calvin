@@ -42,7 +42,7 @@ class Product extends Model
      * Field yang akan di-cast ke tipe data tertentu
      */
     protected $casts = [
-        'price' => 'decimal',
+        'price' => 'decimal:2',
         'stock' => 'integer',
         'is_active' => 'boolean'
     ];

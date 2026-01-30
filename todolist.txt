@@ -74,6 +74,31 @@ Phase 3 – Keranjang & Checkout
 
 * User order history: List semua order user, Detail order, Status tracking
 
+3.4 Payment Setup
+
+* Payment method list: Bank Transfer, E-Wallet, COD
+* Payment status: pending, unpaid, paid, failed, expired
+
+3.5 Payment Process
+
+* Migration payments: id, order_id, payment_method, amount, status, paid_at, created_at, updated_at
+* Payment Controller: Pilih metode pembayaran, Generate payment record, Update status pembayaran
+* Payment logic: Validasi order, Cocokkan amount, Update status order setelah payment sukses
+
+3.6 Payment Confirmation
+
+* Manual payment confirmation (upload bukti transfer)
+* Admin verifikasi pembayaran
+* Update payment status: paid / failed
+* Update order status otomatis setelah pembayaran valid
+
+3.7 Payment History
+
+* User payment history:
+* List semua pembayaran
+* Detail pembayaran
+* Status pembayaran
+
 Phase 4 – Admin Panel
 
 4.1 Dashboard Admin
