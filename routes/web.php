@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/test', function (){
         return 'Selamat datang admin';
     });
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('categories', CategoryController::class);
 });
 
 require __DIR__.'/auth.php';

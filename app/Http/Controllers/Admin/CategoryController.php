@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::latest()->paginate(10);
-        return view('categories.index', compact($categories));
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -59,9 +59,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        return redirect('categories.edit', compact('category'));
+        return view('categories.edit', compact('category'));
     }
 
     /**
